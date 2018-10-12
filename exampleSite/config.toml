@@ -11,12 +11,12 @@ pygmentsCodeFences = true
 
 [[params.social]]
 url = "https://github.com/julian-klode"
-fa_icon = "fa-github"
+fa_icon = "fab fa-github"
 
 [[params.social]]
 url = "https://twitter.com/julian-klode"
-fa_icon = "fa-twitter"
+fa_icon = "fab fa-twitter"
 
 [[params.social]]
 url = "/index.xml"
-fa_icon = "fa-rss"
+fa_icon = "fa fa-rss"
