@@ -1,17 +1,23 @@
 <section class="section">
   <div class="container">
     <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-start">
-        <a class="nav-item" href="{{ .Site.BaseURL }}/"><h1 class="title is-4">{{ .Site.Title }}</h1></a>
+      <div class="navbar-brand">
+        {{ if .Site.Params.AvatarImage }}
+          <a class="nav-item" href="{{ .Site.BaseURL }}/"><img src="{{ .Site.Params.AvatarImage }}" class="avatar"><span class="title">{{ .Site.Title }}</span></a>
+        {{ else }}
+        <a class="nav-item" href="{{ .Site.BaseURL }}/"><span class="title">{{ .Site.Title }}</span></a>
+        {{ end }}
       </div>
       <div class="navbar-end ">
-        {{ range .Site.Params.social }}
+        <div class="buttons">
+          {{ range .Site.Params.social }}
           <a href="{{ .url }}">
             <span class="icon">
               <i class="{{ .fa_icon }}"></i>
             </span>
           </a>
           {{ end }}
+        </div>
       </div>
     </nav>
   </div>
