@@ -39,9 +39,11 @@ class CollectMastodonData {
     /** @var string uid on the mastodon instance */
     private $uid;
 
+    /** @var Redis redis instance */
+    private $redis;
+
     /** @var array cached comments from previous searches */
     private $commentCache = [];
-
     private $cacheFile = 'myCommentsCache.json';
 
     public function __construct($config) {
@@ -50,9 +52,13 @@ class CollectMastodonData {
         $this->uid = $config['user-id'];
 
         $this->api = new Mastodon_api();
-
         $this->api->set_url($this->mastodonUrl);
         $this->api->set_token($this->bearerToken, 'bearer');
+
+        if (array_key_exists('redis-url', $config) && $config['redis-url']) {
+            $this->redis = new Redis();
+            $this->redis->pconnect($config['redis-url']);
+        }
     }
 
     private function filterComments($descendants, $root, &$result) {
@@ -128,11 +134,19 @@ class CollectMastodonData {
     public function storeCollection($id, $comments) {
         $timestamp = time();
         $comments['timestamp'] = $timestamp;
-        $this->commentCache[$id] = $comments;
-        file_put_contents($this->cacheFile, json_encode($this->commentCache));
+        if ($this->redis) {
+            $this->redis->set("comments/$id", json_encode($comments));
+            $this->redis->expire("comment/$id", $this->threshold);
+        } else {
+            $this->commentCache[$id] = $comments;
+            file_put_contents($this->cacheFile, json_encode($this->commentCache));
+        }
     }
 
     public function getCachedCollection($search) {
+        if ($this->redis) {
+            return json_decode($this->redis->get("comments/$search"));
+        }
         if (file_exists($this->cacheFile)) {
             $cachedComments = file_get_contents($this->cacheFile);
             $cachedCommentsArray = json_decode($cachedComments, true);
