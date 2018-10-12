@@ -1,0 +1,21 @@
+{{ if .Site.Params.MastodonUser }}
+<section class="section">
+  <div class="container comments-container">
+    <h2>Reactions from Mastodon</h2>
+    <div id="statistics">
+        <div id="like-count-container"></div><div id="reblog-count-container"></div><div id="reply-count-container"></div>
+    </div>
+    <div class="clear"></div>
+    <div id="comments"></div>
+    <div class="clear"></div>
+    <div id="reference"></div>
+  </div>
+</section>
+
+<script>
+    var BaseURL = "{{ .Site.BaseURL }}";
+    var MastodonUser = "{{ .Site.Params.MastodonUser }}";
+</script>
+<script src="//jak-linux.org/jquery.min.js"></script>
+<script src="{{ .Site.BaseURL }}/mastodon/getcomments.js"></script>
+{{ end }}

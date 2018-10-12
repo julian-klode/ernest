@@ -8,6 +8,7 @@ googleAnalytics = ""
 pygmentsCodeFences = true
 
 [params]
+mastodonUser = "juliank"
 
 [[params.social]]
 url = "https://github.com/julian-klode"

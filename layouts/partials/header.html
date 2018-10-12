@@ -5,5 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }}{{ end }}</title>
 	<link rel="stylesheet" href="{{ .Site.BaseURL }}/css/style.css" />
+	{{ if .Site.Params.MastodonUser }}
+	<link rel="stylesheet" href="{{ .Site.BaseURL }}/mastodon/mastodon-comments.css" />
+	{{ end }}
 </head>
 <body>

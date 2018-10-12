@@ -196,6 +196,10 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 
 // headers to tell that result is JSON
 header('Content-type: application/json');
-
+$time = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
+header("Time-Used: $time");
 // send the result now
-echo json_encode($result);
+$encodedResult = json_encode($result);
+
+header('Content-Length: '.strlen($encodedResult));
+echo $encodedResult;

@@ -1,14 +1,14 @@
 $(document).ready(function() {
 
     // check if we show a blog post or not
-    var isArticle = /\/?post\/.+$/.test(RelPermalink);
+    var isArticle = true; // /\/?post\/.+$/.test(RelPermalink);
     if (isArticle === false) {
         console.log("Not a blog post, no need to search for comments");
         return;
     }
 
     $.ajax({
-        url: "https://jak-linux.org/foo/mastodon.comments/getcomments.php",
+        url: BaseURL + "/mastodon/getcomments.php",
         type: "get",
         data: {
             search : "Blog"
@@ -37,11 +37,11 @@ $(document).ready(function() {
                 }
             });
             if (parseInt(root) > 0) {
-                $("#reference").append("<a href='https://mastodon.social/users/bjoern/statuses/" + root + "'>Join the discussion on Mastodon!</a>");
+                $("#reference").append("<a href='https://mastodon.social/users/" + MastodonUser + "/statuses/" + root + "'>Join the discussion on Mastodon!</a>");
             } else {
                 $("#comments").empty();
                 $("#statistics").empty();
-                $("#reference").append("Comments are handled by my <a href='https://mastodon.social/@bjoern'>Mastodon account</a>. Sadly this article wasn't published at Mastodon. Feel free to <a href='https://www.schiessle.org/contact/'>send me a mail</a> if you want to share your thoughts regarding this topic.");
+                $("#reference").append("Comments are handled by my <a href='https://mastodon.social/@" + MastodonUser + "'>Mastodon account</a>. Sadly this article wasn't published at Mastodon. Feel free to send me a mail if you want to share your thoughts regarding this topic.");
             }
 
         }
