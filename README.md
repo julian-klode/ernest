@@ -14,6 +14,17 @@ cd themes
 git clone https://github.com/julian-klode/ernest.git
 ```
 
+## Differences from Hemingway
+
+* Support for highlight.js has been removed
+* Support for commenting using mastodon has been added. Just configure
+  your user in the config.toml, put a config.php in the right spot
+  (see static/mastodon/), and then post a toot with a link to your blog
+  entry, and replies to it will be embedded on the page.
+* XHTML-conform output with head and body elements
+* Support for the `list.html` template
+* In social stuff, `fa_icon` now needs proper `fab` or `fa` attributes
+
 ## Configuration
 
 Take a look in the [exampleSite](https://github.com/julian-klode/ernest/tree/master/exampleSite) folder.
@@ -33,25 +44,22 @@ theme = "ernest"
 copyright = "&copy;  <a href=\"https://github.com/tanksuzuki\">Asuka Suzuki</a> 2016, <a href=\"https://github.com/julian-klode\">Julian Andres Klode</a> 2018"
 disqusShortname = "shortname"
 googleAnalytics = ""
+pygmentsCodeFences = true
 
 [params]
-
-[params.highlight]
-style = "github"
-languages = ["go", "dockerfile"]
+mastodonUser = "juliank"
 
 [[params.social]]
 url = "https://github.com/julian-klode"
-fa_icon = "fa-github"
+fa_icon = "fab fa-github"
 
 [[params.social]]
 url = "https://twitter.com/julian-klode"
-fa_icon = "fa-twitter"
+fa_icon = "fab fa-twitter"
 
 [[params.social]]
 url = "/index.xml"
-fa_icon = "fa-rss"
-
+fa_icon = "fa fa-rss"
 ```
 
 ## Build
@@ -64,7 +72,9 @@ You can go to localhost:1313 and this theme should be visible.
 
 ## License
 
-Ernest is licensed under the [MIT License](LICENSE.md).
+Ernest is licensed under the [MIT License](LICENSE.md). Server-side
+scripts for Mastodon integration are AGPL. Vendorized code has its own
+license, please look in there.
 
 ## Author
 
