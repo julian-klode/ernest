@@ -24,7 +24,7 @@ $(document).ready(function() {
                 var timestamp = Date.parse(value.date);
                 var date = new Date(timestamp);
                 var comment = "<div class='comment' id='" + key + "'>";
-                comment += "<img class='avatar' src='" + value.author.avatar + "' />";
+                comment += "<img class='avatar' referrerpolicy='no-referrer' src='" + value.author.avatar + "' />";
                 comment += "<div class='author'><a class='displayName' href='" + value.author.url + "'>" + value.author.display_name + "</a> wrote at ";
                 comment += "<a class='date' href='" + value.url + "'>" + date.toDateString() + ', ' + date.toLocaleTimeString() + "</a></div>";
                 comment += "<div class='toot'>" + value.toot + "</div>";
