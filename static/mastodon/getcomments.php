@@ -132,8 +132,6 @@ class CollectMastodonData {
     }
 
     public function storeCollection($id, $comments) {
-        $timestamp = time();
-        $comments['timestamp'] = $timestamp;
         if ($this->redis) {
             $this->redis->set("comments/$id", json_encode($comments));
             $this->redis->expire("comments/$id", $this->threshold);
@@ -184,6 +182,7 @@ if (!empty($search)) {
             // FIXME: At the moment the API doesn't return the correct replies count so I count it manually
             $result['stats']['replies'] = count($result['comments']);
         }
+        $result['timestamp'] = time();
         $collector->storeCollection($search, $result);
     } else {
         $result = $oldCollection;
