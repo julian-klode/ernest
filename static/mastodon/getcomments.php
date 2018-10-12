@@ -136,7 +136,7 @@ class CollectMastodonData {
         $comments['timestamp'] = $timestamp;
         if ($this->redis) {
             $this->redis->set("comments/$id", json_encode($comments));
-            $this->redis->expire("comment/$id", $this->threshold);
+            $this->redis->expire("comments/$id", $this->threshold);
         } else {
             $this->commentCache[$id] = $comments;
             file_put_contents($this->cacheFile, json_encode($this->commentCache));
