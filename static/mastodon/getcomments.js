@@ -11,7 +11,7 @@ $(document).ready(function() {
         url: BaseURL + "/mastodon/getcomments.php",
         type: "get",
         data: {
-            search : "Blog"
+            search : RelPermalink
         },
         success: function(data) {
             var stats = data.stats;
