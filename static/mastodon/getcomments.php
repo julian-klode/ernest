@@ -145,7 +145,7 @@ class CollectMastodonData {
 
     public function getCachedCollection($search) {
         if ($this->redis) {
-            return json_decode($this->redis->get("comments/$search"));
+            return json_decode($this->redis->get("comments/$search"), true);
         }
         if (file_exists($this->cacheFile)) {
             $cachedComments = file_get_contents($this->cacheFile);
