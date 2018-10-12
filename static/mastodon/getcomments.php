@@ -34,7 +34,7 @@ class CollectMastodonData {
     private $bearerToken;
 
     /** @var int keep cache at least 600 seconds = 10 minutes */
-    private $threshold = 600;
+    public $threshold = 600;
 
     /** @var string uid on the mastodon instance */
     private $uid;
@@ -190,8 +190,12 @@ if (!empty($search)) {
 }
 
 // headers for not caching the results
-header('Cache-Control: no-cache, must-revalidate');
-header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+$mod_gmt = gmdate("D, d M Y H:i:s \G\M\T", $result['timestamp']);
+$exp_gmt = gmdate("D, d M Y H:i:s \G\M\T", $result['timestamp'] + $collector->threshold);
+$max_age = $result['timestamp'] + $collector->threshold - time();
+header("Expires: " . $exp_gmt);
+header("Last-Modified: " . $mod_gmt);
+header("Cache-Control: public, max-age=" . $max_age);
 
 // headers to tell that result is JSON
 header('Content-type: application/json');
