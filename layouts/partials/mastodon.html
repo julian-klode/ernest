@@ -20,7 +20,8 @@
     var RelPermalink="{{ .RelPermalink }}";
     var MastodonUser = "{{ .Site.Params.MastodonUser }}";
 </script>
-<script src="//jak-linux.org/jquery.min.js"></script>
+{{ $jquery := resources.Get "js/jquery-3.3.1.min.js" | minify | fingerprint }}
+<script src="{{ $jquery.Permalink }}"></script>
 {{ $mastodonJS := resources.Get "js/mastodon-comments.js" | minify | fingerprint }}
 <script src="{{ $mastodonJS.Permalink }}"></script>
 {{ end }}
