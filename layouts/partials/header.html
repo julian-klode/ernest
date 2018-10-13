@@ -4,7 +4,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }}{{ end }}</title>
-	{{ $mainStyle := resources.Get "css/main.css" | fingerprint }}
+	{{ $mainStyle := resources.Get "css/main.css" | minify | fingerprint }}
 	<link rel="stylesheet" href="{{ $mainStyle.Permalink }}" />
 	{{ if .Site.Params.MastodonUser }}
 	{{ $mastodonStyle := resources.Get "css/mastodon-comments.css" | minify | fingerprint }}
