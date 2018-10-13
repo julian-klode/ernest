@@ -217,7 +217,7 @@ header("Cache-Control: public, max-age=" . $max_age);
 // headers to tell that result is JSON
 header('Content-type: application/json');
 $time = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
-header("Time-Used: $time");
+header("X-Debugging-Time-Used: $time");
 // send the result now
 $encodedResult = json_encode($result);
 
