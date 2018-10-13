@@ -125,7 +125,7 @@ class CollectMastodonData {
         $result = $this->filterSearchResults($this->api->search(['q' => $search]));
         if ($this->redis) {
             $this->redis->set("roots/$search", json_encode($result));
-            $this->redis->expire("roots/$id", isset($result[0]) ? $this->rootThreshold : $this->threshold);
+            $this->redis->expire("roots/$search", isset($result[0]) ? $this->rootThreshold : $this->threshold);
         }
         return $result;
     }
