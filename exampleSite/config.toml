@@ -10,6 +10,11 @@ pygmentsCodeFences = true
 [params]
 mastodonUser = "juliank"
 
+[params.head]
+addOpenGraph = true
+addTwitterCard = true
+addSchema = true
+
 [[params.social]]
 url = "https://github.com/julian-klode"
 fa_icon = "fab fa-github"

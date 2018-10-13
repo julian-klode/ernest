@@ -10,5 +10,14 @@
 	{{ $mastodonStyle := resources.Get "css/mastodon-comments.css" | minify | fingerprint }}
 	<link rel="stylesheet" href="{{ $mastodonStyle.Permalink }}" />
 	{{ end }}
+	{{ if .Site.Params.Head.AddOpenGraph }}
+	{{ template "_internal/opengraph.html" . }}
+	{{ end }}
+	{{ if .Site.Params.Head.AddTwitterCard }}
+	{{ template "_internal/twitter_cards.html" . }}
+	{{ end }}
+	{{ if .Site.Params.Head.AddSchema }}
+	{{ template "_internal/schema.html" . }}
+	{{ end }}
 </head>
 <body>
