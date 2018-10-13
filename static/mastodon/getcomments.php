@@ -36,6 +36,13 @@ class CollectMastodonData {
     /** @var int keep cache at least 600 seconds = 10 minutes */
     public $threshold = 600;
 
+    /** @var int keep cache of found root too for 4 weeks (redis only)
+     *
+     * This threshold only applies if a root was found, otherwise the
+     * normal threshold applies.
+     * */
+    public $rootThreshold = 28 * 24 * 60 * 60;
+
     /** @var string uid on the mastodon instance */
     private $uid;
 
@@ -109,8 +116,18 @@ class CollectMastodonData {
      * @return array
      */
     public function findToots($search) {
-        $result = $this->api->search(['q' => $search]);
-        return $this->filterSearchResults($result);
+        if ($this->redis) {
+            $resultJSON = $this->redis->get("roots/$search");
+            if ($resultJSON) {
+                return json_decode($resultJSON);
+            }
+        }
+        $result = $this->filterSearchResults($this->api->search(['q' => $search]));
+        if ($this->redis) {
+            $this->redis->set("roots/$search", json_encode($result));
+            $this->redis->expire("roots/$id", isset($result[0]) ? $this->rootThreshold : $this->threshold);
+        }
+        return $result;
     }
 
     public function getComments($id, &$result) {
