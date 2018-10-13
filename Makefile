@@ -1,6 +1,6 @@
 all: static/css/style.css
 
 static/css/style.css:
-	sassc -t compressed sass/style.sass  > static/css/style.css
+	sassc sass/style.sass  > assets/css/main.css
 
 .PHONY: static/css/style.css

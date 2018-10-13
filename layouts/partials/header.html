@@ -4,9 +4,11 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }}{{ end }}</title>
-	<link rel="stylesheet" href="{{ .Site.BaseURL }}/css/style.css{{ if .Site.Params.HashedResources }}?md5={{ readFile "themes/ernest/static/css/style.css" | md5 }}{{end}}" />
+	{{ $mainStyle := resources.Get "css/main.css" | fingerprint }}
+	<link rel="stylesheet" href="{{ $mainStyle.Permalink }}" />
 	{{ if .Site.Params.MastodonUser }}
-	<link rel="stylesheet" href="{{ .Site.BaseURL }}/mastodon/mastodon-comments.css{{ if .Site.Params.HashedResources }}?md5={{ readFile "themes/ernest/static/mastodon/mastodon-comments.css" | md5 }}{{end}}" />
+	{{ $mastodonStyle := resources.Get "css/mastodon-comments.css" | minify | fingerprint }}
+	<link rel="stylesheet" href="{{ $mastodonStyle.Permalink }}" />
 	{{ end }}
 </head>
 <body>
