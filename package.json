@@ -1,6 +1,7 @@
 {
   "name": "ernest",
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.4.1",
     "bulma": "^0.7.2",
     "postcss-cli": "^6.0.0",
     "postcss-preset-env": "^6.1.1",
