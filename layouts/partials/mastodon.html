@@ -20,8 +20,8 @@
     var RelPermalink="{{ .RelPermalink }}";
     var MastodonUser = "{{ .Site.Params.MastodonUser }}";
 </script>
-{{ $jquery := resources.Get "js/jquery.min.js" | minify | fingerprint }}
+{{ $jquery := resources.Get "js/jquery.min.js"  | fingerprint }}
 <script src="{{ $jquery.Permalink }}"></script>
-{{ $mastodonJS := resources.Get "js/mastodon-comments.js" | minify | fingerprint }}
+{{ $mastodonJS := resources.Get "js/mastodon-comments.js" | fingerprint }}
 <script src="{{ $mastodonJS.Permalink }}"></script>
 {{ end }}
