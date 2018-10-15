@@ -72,7 +72,7 @@ class CollectMastodonData {
         foreach ($descendants as $d) {
             $result['comments'][$d['id']] = [
                 'author' => [
-                    'display_name' => $d['account']['display_name'],
+                    'display_name' => $d['account']['display_name'] ? $d['account']['display_name'] : $d['account']['username'],
                     'avatar' => $d['account']['avatar_static'],
                     'url' => $d['account']['url']
                 ],
