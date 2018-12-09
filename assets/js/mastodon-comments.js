@@ -8,6 +8,11 @@ $(document).ready(function() {
         return;
     }
 
+    var areLazy = ('IntersectionObserver' in window &&
+        'IntersectionObserverEntry' in window &&
+        'intersectionRatio' in window.IntersectionObserverEntry.prototype &&
+        'isIntersecting' in window.IntersectionObserverEntry.prototype);
+
     $.ajax({
         url: BaseURL + "/mastodon/getcomments.php",
         type: "get",
@@ -25,7 +30,10 @@ $(document).ready(function() {
                 var timestamp = Date.parse(value.date);
                 var date = new Date(timestamp);
                 var comment = "<div class='comment' id='" + key + "'>";
-                comment += "<img class='avatar' referrerpolicy='no-referrer' src='" + value.author.avatar + "' />";
+                if (areLazy)
+                    comment += "<img class='avatar lazy' referrerpolicy='no-referrer' data-src='" + value.author.avatar + "' />";
+                else
+                    comment += "<img class='avatar' referrerpolicy='no-referrer' src='" + value.author.avatar + "' />";
                 comment += "<div class='author'><a class='displayName' href='" + value.author.url + "'>" + value.author.display_name + "</a> wrote at ";
                 comment += "<a class='date' href='" + value.url + "'>" + date.toDateString() + ', ' + date.toLocaleTimeString() + "</a></div>";
                 comment += "<div class='toot'>" + value.toot + "</div>";
@@ -37,6 +45,23 @@ $(document).ready(function() {
                     $(selector).append(comment);
                 }
             });
+
+            let lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+            let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                      let lazyImage = entry.target;
+                      lazyImage.src = lazyImage.dataset.src;
+                      lazyImage.classList.remove("lazy");
+                      lazyImageObserver.unobserve(lazyImage);
+                    }
+                });
+            });
+
+            lazyImages.forEach(function(lazyImage) {
+                lazyImageObserver.observe(lazyImage);
+            });
+
             if (parseInt(root) > 0) {
                 $("#reference").append("<a href='https://mastodon.social/users/" + MastodonUser + "/statuses/" + root + "'>Join the discussion on Mastodon!</a>");
             } else {
