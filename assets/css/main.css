@@ -14361,7 +14361,7 @@ article + article {
   padding: 8px 10px;
   vertical-align: top;
 }
-.content > code, .content p > code {
+.content > code, .content p > code, .content li > code {
   font-size: 90%;
   padding: 2px 4px;
   margin: 0 2px;
