@@ -6,10 +6,6 @@
 	<title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }}{{ end }}</title>
 	{{ $mainStyle := resources.Get "css/main.css" | minify | fingerprint }}
 	<link rel="stylesheet" href="{{ $mainStyle.Permalink }}" />
-	{{ if .Site.Params.MastodonUser }}
-	{{ $mastodonStyle := resources.Get "css/mastodon-comments.css" | minify | fingerprint }}
-	<link rel="stylesheet" href="{{ $mastodonStyle.Permalink }}" />
-	{{ end }}
 	{{ if .Site.Params.Head.AddOpenGraph }}
 	{{ template "_internal/opengraph.html" . }}
 	{{ end }}

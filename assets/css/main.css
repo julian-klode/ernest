@@ -10502,3 +10502,56 @@ article + article {
   stroke: currentColor;
   fill: currentColor;
 }
+
+.comments-container .comment .avatar {
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin-left: 16px;
+  margin-right: 16px;
+  border-radius: 50%;
+}
+
+.comments-container #reference {
+  text-align: center;
+  font-size: 16px;
+}
+
+.comments-container .comment {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 16px;
+  padding-left: 20px;
+}
+
+.comments-container .toot {
+  padding-left: 82px;
+}
+
+.comments-container .author {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.comments-container #mastodon-like-count, .comments-container #mastodon-reblog-count, .comments-container #mastodon-reply-count {
+  float: right;
+  font-size: 16px;
+  background: #eee;
+  padding: 3px 10px;
+  margin: 30px 5px;
+  border-radius: 5px;
+}
+
+.comments-container #mastodon-like-count a, .comments-container #mastodon-reblog-count a, .comments-container #mastodon-reply-count a {
+  color: #333333;
+}
+
+.comments-container #mastodon-like-count a:hover, .comments-container #mastodon-reblog-count a:hover, .comments-container #mastodon-reply-count a:hover {
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.comments-container .fa {
+  padding-right: 10px;
+}
