@@ -20827,3 +20827,12 @@ article + article {
 .content li table {
   margin-bottom: 1.5em;
 }
+
+.icon svg {
+  vertical-align: sub;
+  display: inline-block;
+  width: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}

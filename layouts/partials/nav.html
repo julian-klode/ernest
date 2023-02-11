@@ -11,10 +11,9 @@
       <div class="navbar-end ">
         <div class="buttons">
           {{ range .Site.Params.social }}
-          <a href="{{ .url }}" rel="me">
-            <span class="icon">
-              <i class="{{ .fa_icon }}"></i>
-            </span>
+          <a href="{{ .url }}" rel="me" class="icon">
+              {{ $path := printf "node_modules/@fortawesome/fontawesome-free/svgs/%s.svg" .fa_icon  }}
+              {{ os.ReadFile $path | safeHTML }}
           </a>
           {{ end }}
         </div>
