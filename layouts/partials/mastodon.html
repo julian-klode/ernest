@@ -21,7 +21,7 @@
     var MastodonUser = "{{ .Site.Params.MastodonUser }}";
 </script>
 {{ $jquery := resources.Get "js/jquery.min.js"  | fingerprint }}
-<script src="{{ $jquery.Permalink }}"></script>
+<script src="{{ $jquery.Permalink }}" defer="defer"></script>
 {{ $mastodonJS := resources.Get "js/mastodon-comments.js" | fingerprint }}
-<script src="{{ $mastodonJS.Permalink }}"></script>
+<script src="{{ $mastodonJS.Permalink }}" defer="defer"></script>
 {{ end }}
