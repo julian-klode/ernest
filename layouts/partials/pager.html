@@ -5,10 +5,7 @@
         <div class="level-item">
           {{ if .Paginator.HasPrev }}
           <a class="button" href="{{ .Paginator.Prev.URL }}">
-            <span class="icon is-small is-marginless">
-              <i class="fa fa-angle-left"></i>
-            </span>
-            Newer
+            〈 Newer
           </a>
           {{ end }}
         </div>
@@ -17,10 +14,7 @@
         <div class="level-item">
           {{ if .Paginator.HasNext }}
           <a class="button" href="{{ .Paginator.Next.URL }}">
-            Older
-            <span class="icon is-small is-marginless">
-              <i class="fa fa-angle-right"></i>
-            </span>
+            Older 〉
           </a>
           {{ end }}
         </div>

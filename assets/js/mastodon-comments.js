@@ -22,9 +22,9 @@ $(document).ready(function() {
         success: function(data) {
             var stats = data.stats;
             var root = data.stats.root;
-            $("#like-count-container").append('<div id="mastodon-like-count"><a href="' + stats.url + '"><span title="Likes"><i class="fa fa-star"></i>' + stats.favs + '</span></a></div></div>');
-            $("#reblog-count-container").append('<div id="mastodon-reblog-count"><a href="' + stats.url + '"><span title="Reblogs"><i class="fa fa-retweet"></i>' + stats.reblogs + '</span></a></div></div>');
-            $("#reply-count-container").append('<div id="mastodon-reply-count"><a href="' + stats.url + '"><span title="Comments"><i class="fa fa-comments"></i>' + stats.replies + '</span></a></div></div>');
+            $("#like-count-container").append('<div id="mastodon-like-count"><a href="' + stats.url + '"><span title="Likes">★' + stats.favs + '</span></a></div></div>');
+            $("#reblog-count-container").append('<div id="mastodon-reblog-count"><a href="' + stats.url + '"><span title="Reblogs">🔁' + stats.reblogs + '</span></a></div></div>');
+            $("#reply-count-container").append('<div id="mastodon-reply-count"><a href="' + stats.url + '"><span title="Comments">💬' + stats.replies + '</span></a></div></div>');
             var comments = data.comments;
             $.each(comments, function(key, value) {
                 var timestamp = Date.parse(value.date);

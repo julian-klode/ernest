@@ -10,10 +10,7 @@
         {{ .Summary | plainify | safeHTML }}
         {{ if .Truncated }}
         ...<a class="button is-text" href="{{ .Permalink }}" style="height:28px">
-          Read more
-          <span class="icon is-small is-marginless">
-            <i class="fa fa-angle-double-right"></i>
-          </span>
+          Read more 》
         </a>
         {{ end }}
       </div>

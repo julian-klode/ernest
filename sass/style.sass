@@ -4,9 +4,6 @@ $grey-dark: #42464c
 $family-sans-serif: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif
 
 @import "../node_modules/bulma/bulma"
-@import "../node_modules/@fortawesome/fontawesome-free//scss/solid.scss"
-@import "../node_modules/@fortawesome/fontawesome-free//scss/brands.scss"
-@import "../node_modules/@fortawesome/fontawesome-free//scss/fontawesome.scss"
 
 .container
   max-width: 800px
@@ -140,8 +137,7 @@ article+article
     table
       margin-bottom: 1.5em
 
-.icon
-    svg
+.icon svg, .fa::before
         vertical-align: sub
         display: inline-block
         width: 1em
@@ -203,4 +199,3 @@ article+article
 .comments-container
   .fa
     padding-right: 10px
-
