@@ -323,7 +323,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+  font-family: "Noto Sans", "Ubuntu", sans-serif;
 }
 
 code,
@@ -9195,15 +9195,15 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .is-family-primary {
-  font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif !important;
+  font-family: "Noto Sans", "Ubuntu", sans-serif !important;
 }
 
 .is-family-secondary {
-  font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif !important;
+  font-family: "Noto Sans", "Ubuntu", sans-serif !important;
 }
 
 .is-family-sans-serif {
-  font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif !important;
+  font-family: "Noto Sans", "Ubuntu", sans-serif !important;
 }
 
 .is-family-monospace {
@@ -10337,6 +10337,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding: 3rem 1.5rem 6rem;
 }
 
+/* Ernest theme */
 .container {
   max-width: 800px;
   margin: 0 auto;
