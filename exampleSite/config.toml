@@ -4,7 +4,7 @@ title = "Ernest"
 theme = "ernest"
 copyright = "&copy;  <a href=\"https://github.com/tanksuzuki\">Asuka Suzuki</a> 2016, <a href=\"https://github.com/julian-klode\">Julian Andres Klode</a> 2018"
 disqusShortname = "shortname"
-googleAnalytics = ""
+googleAnalytics = false
 pygmentsCodeFences = true
 
 [params]
